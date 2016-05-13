@@ -38,18 +38,20 @@ int main()
     /*Ios ios;
     cout << ios.*/
     Os *ptr_os;
+    Cpu *ptr_cpu;
     #ifdef _WIN32
         Windowsos os;
+        Cpuwin cpu;
     #elif __APPLE__
         Macos os;
+        Cpumac cpu;
     #else
         Linuxos os;
+        Cpulinux cpu;
     #endif
     ptr_os = &os;
-    
-    Cpu cpu;
-    Cpu *ptr_cpu;
     ptr_cpu = &cpu;
+    
     cout << "CPU informations:" << endl;
     cout << ptr_cpu->getCpuInfo() << endl;
     cout << "Number of Cores: " << cpu.getCoresCount() << endl;

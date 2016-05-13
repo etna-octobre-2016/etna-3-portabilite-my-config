@@ -38,6 +38,7 @@
 #include "socket.h"
 #include "macos.hpp"
 #include "windowsos.hpp"
+#include "cpumac.hpp"
 
 #define WAIT_SEC        0
 #define WAIT_USEC       20

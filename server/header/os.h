@@ -13,18 +13,4 @@ class Os
     virtual std::string getName() = 0; 
     virtual int getArchitecture() = 0;   
 };
-
-/*
-class Os
-{
-    private:  
-    std::string name;
-    int architecture;
-    
-    public:
-    Os();
-    std::string getName();
-    int getArchitecture();
-};
-*/
 #endif

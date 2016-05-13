@@ -5,15 +5,15 @@
 
 class Cpu
 {
-    private:  
+    protected:  
     unsigned int coresCount;
     uint64_t freq;
     std::string cpuinfo;
     
     public:
-    Cpu();
-    unsigned int getCoresCount();
-    uint64_t getFreq();
-    std::string getCpuInfo();
+    //Cpu();
+    virtual unsigned int getCoresCount() = 0;
+    virtual uint64_t getFreq() = 0;
+    virtual std::string getCpuInfo() = 0;
 };
 #endif
