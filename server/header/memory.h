@@ -3,28 +3,17 @@
 
 #include "header.h"
 
-#ifdef __APPLE__
-    #include <mach/vm_statistics.h>
-    #include <mach/mach_types.h>
-    #include <mach/mach_init.h>
-    #include <mach/mach_host.h>
-#endif
-
 class Memory
 {
-    private:
-    #ifdef _WIN32
-        MEMORYSTATUSEX statex;
-    #endif
+    protected:
     uint64_t totalram;
     unsigned int freeram;
     unsigned int pourcentusedram;
     
     public:
-    Memory();
-    uint64_t getTotalRam();
-    unsigned int getFreeRam();
-    unsigned int getPourcentRam();
+    virtual uint64_t getTotalRam() = 0;
+    virtual unsigned int getFreeRam() = 0;
+    virtual unsigned int getPourcentRam() = 0;
 };
 
 #endif

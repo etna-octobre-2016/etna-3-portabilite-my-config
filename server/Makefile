@@ -14,19 +14,21 @@ CFLAGSWIN = /clr
 
 
 SRC = $(SRCDIR)/main.cpp \
-		$(SRCDIR)/memory.cpp \
 		$(SRCDIR)/hdd.cpp \
 		$(SRCDIR)/socket.cpp \
 		$(SRCDIR)/client.cpp \
 
 SRCMAC = $(SRCDIR)/macos.cpp \
-		$(SRCDIR)/cpumac.cpp
+		$(SRCDIR)/cpumac.cpp \
+		$(SRCDIR)/memorymac.cpp
 
 SRCWIN = $(SRCDIR)/windowsos.cpp \
-			$(SRCDIR)/cpuwin.cpp 
+			$(SRCDIR)/cpuwin.cpp \
+			$(SRCDIR)/memorywin.cpp
 
 SRCLINUX = $(SRCDIR)/linuxos.cpp \
-			$(SRCDIR)/cpulinux.cpp 
+			$(SRCDIR)/cpulinux.cpp \
+			$(SRCDIR)/memorylinux.cpp
 
 RM = rm -rf
 # the build target executable:

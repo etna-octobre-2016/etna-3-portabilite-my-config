@@ -6,6 +6,7 @@
     #include <windows.h>
     #include <winsock2.h>
     typedef int socklen_t;
+    #include "memorywin.hpp"
 #else
     #include <sys/utsname.h>
     #include <sys/types.h>
@@ -39,6 +40,10 @@
 #include "macos.hpp"
 #include "windowsos.hpp"
 #include "cpumac.hpp"
+#include "cpuwin.hpp"
+#include "cpulinux.hpp"
+#include "memorymac.hpp"
+#include "memorylinux.hpp"
 
 #define WAIT_SEC        0
 #define WAIT_USEC       20

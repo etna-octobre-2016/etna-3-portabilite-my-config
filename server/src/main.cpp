@@ -39,18 +39,23 @@ int main()
     cout << ios.*/
     Os *ptr_os;
     Cpu *ptr_cpu;
+    Memory *ptr_mem;
     #ifdef _WIN32
         Windowsos os;
         Cpuwin cpu;
+        Memorywin mem;
     #elif __APPLE__
         Macos os;
         Cpumac cpu;
+        Memorymac mem;
     #else
         Linuxos os;
         Cpulinux cpu;
+        Memorylinux mem;
     #endif
     ptr_os = &os;
     ptr_cpu = &cpu;
+    ptr_mem = &mem;
     
     cout << "CPU informations:" << endl;
     cout << ptr_cpu->getCpuInfo() << endl;
@@ -59,12 +64,11 @@ int main()
     cout << "OS informations:" << endl;
     cout << ptr_os->getName() << endl;
     cout << "architecture: " << ptr_os->getArchitecture() << " bits" << endl;
-    Memory memory;
     cout << endl;
     cout << "Ram informations:" << endl;
-    cout << "Total RAM: " << memory.getTotalRam() << " KB" << endl;
-    cout << "Free RAM: " << memory.getFreeRam() << " KB" << endl;
-    cout << memory.getPourcentRam() << "% used Ram" << endl; 
+    cout << "Total RAM: " << ptr_mem->getTotalRam() << " KB" << endl;
+    cout << "Free RAM: " << ptr_mem->getFreeRam() << " KB" << endl;
+    cout << ptr_mem->getPourcentRam() << "% used Ram" << endl; 
     cout << endl;
     Hdd hdd;
     cout << "HDD informations: " << endl;

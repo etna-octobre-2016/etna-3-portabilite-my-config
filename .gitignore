@@ -26,6 +26,7 @@
 *.exe
 *.out
 *.app
+# other
 .svn/
 .vscode/
 Specifications validation intermediaire.docx
