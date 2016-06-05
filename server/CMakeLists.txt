@@ -3,7 +3,8 @@ project(myconfigserver)
 
 if(WIN32)
 
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /clr")
+  set(CMAKE_CXX_FLAGS "/clr")
+  set(CMAKE_CXX_FLAGS_DEBUG "")
   add_executable(
     ${PROJECT_NAME}
 
