@@ -43,20 +43,21 @@ int Windowsos::getArchitecture()
         Console::WriteLine("Registry key not found - aborting");
         architecture = -1;
     }
-    else
-    {
-        String^ valueName = "BuildLabEx";
-        String^ def =(String^) rk->GetValue(valueName);   
-        const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(def)).ToPointer();
-        string name = chars;
-        Marshal::FreeHGlobal(IntPtr((void*)chars));
-        if (name.find("amd64") != std::string::npos)
-        {
-            architecture = 64;
-        }
-        else
-        {
-            architecture = 32;
-        }
+	else
+	{
+		String^ valueName = "BuildLabEx";
+		String^ def = (String^)rk->GetValue(valueName);
+		const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(def)).ToPointer();
+		string name = chars;
+		Marshal::FreeHGlobal(IntPtr((void*)chars));
+		if (name.find("amd64") != std::string::npos)
+		{
+			architecture = 64;
+		}
+		else
+		{
+			architecture = 32;
+		}
+	}
     return architecture;
 }
