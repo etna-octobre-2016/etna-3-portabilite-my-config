@@ -12,7 +12,7 @@ if(WIN32)
     header/cpuwin.hpp
     header/hdd.h
     header/header.h
-	header/memory.h
+    header/memory.h
     header/memorywin.hpp
     header/os.h
     header/windowsos.hpp
@@ -34,7 +34,7 @@ elseif(APPLE)
     header/hdd.h
     header/header.h
     header/macos.hpp
-	header/memory.h
+    header/memory.h
     header/memorymac.hpp
     header/os.h
 
@@ -54,7 +54,7 @@ else(UNIX)
     header/cpulinux.hpp
     header/hdd.h
     header/header.h
-	header/memory.h
+    header/memory.h
     header/memorylinux.hpp
     header/os.h
     header/linuxos.hpp
