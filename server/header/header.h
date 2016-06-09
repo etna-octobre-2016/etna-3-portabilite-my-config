@@ -2,6 +2,7 @@
 #define _HEADER_H_
 #include <iostream>
 #include <string>
+#include <restbed>
 #include "cpu.h"
 #include "hdd.h"
 #include "memory.h"
