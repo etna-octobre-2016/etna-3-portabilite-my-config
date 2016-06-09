@@ -1,6 +1,24 @@
 cmake_minimum_required(VERSION 3.5.2)
 project(myconfigserver)
 
+#################################################
+# OPTIONS
+#################################################
+
+set(RESTBED_INCLUDE_DIR "" CACHE PATH "Restbed library include directory")
+set(RESTBED_LIBRARY_DIR "" CACHE PATH "Restbed library binary directory")
+
+#################################################
+# Libraries
+#################################################
+
+find_library(RESTBED_LIB restbed PATHS ${RESTBED_LIBRARY_DIR})
+include_directories(SYSTEM ${RESTBED_INCLUDE_DIR})
+
+#################################################
+# Compiling
+#################################################
+
 if(WIN32)
 
   set(CMAKE_CXX_FLAGS "/clr")
@@ -26,6 +44,7 @@ if(WIN32)
 
 elseif(APPLE)
 
+  set(CMAKE_CXX_FLAGS "-std=c++11")
   add_executable(
     ${PROJECT_NAME}
 
@@ -47,6 +66,7 @@ elseif(APPLE)
 
 else(UNIX)
 
+  set(CMAKE_CXX_FLAGS "-std=c++11")
   add_executable(
     ${PROJECT_NAME}
 
@@ -67,3 +87,9 @@ else(UNIX)
   )
 
 endif()
+
+#################################################
+# LINKING
+#################################################
+
+target_link_libraries(${PROJECT_NAME} ${RESTBED_LIB})
