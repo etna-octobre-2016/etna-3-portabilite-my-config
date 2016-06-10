@@ -3,9 +3,31 @@
 using namespace restbed;
 using namespace std;
 
+/**
+ * Converts unicode string to normal string
+ * @param  wstr an unicode string
+ * @return      the normal string
+ */
+string ws2s(const std::wstring& wstr)
+{
+    using convert_typeX = std::codecvt_utf8<wchar_t>;
+    std::wstring_convert<convert_typeX, wchar_t> converterX;
+
+    return converterX.to_bytes(wstr);
+}
 void api_cpu_handler(const shared_ptr<Session> session)
 {
-  session->close(OK, "cpu", { { "Content-Length", "3" } });
+  JSONObject  obj;
+  JSONValue   *output;
+  wstring     outputString;
+  ostringstream stringStream;
+
+
+  obj[L"route"] = new JSONValue(L"Je suis une fougère");
+  output = new JSONValue(obj);
+  outputString = output->Stringify();
+  stringStream << outputString.length();
+  session->close(OK, ws2s(outputString), { { "Content-Type", "application/json" } });
 }
 void api_hdd_handler(const shared_ptr<Session> session)
 {

@@ -1,8 +1,10 @@
 #ifndef _HEADER_H_
 #define _HEADER_H_
+#include <codecvt>
 #include <iostream>
 #include <string>
 #include <restbed>
+#include <sstream>
 #include "../lib/simplejson/JSON.h"
 #include "cpu.h"
 #include "hdd.h"
