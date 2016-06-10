@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <restbed>
+#include "../lib/simplejson/JSON.h"
 #include "cpu.h"
 #include "hdd.h"
 #include "memory.h"

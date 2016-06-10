@@ -12,8 +12,12 @@ set(RESTBED_LIBRARY_DIR "" CACHE PATH "Restbed library binary directory")
 # Libraries
 #################################################
 
+# Restbed
 find_library(RESTBED_LIB restbed PATHS ${RESTBED_LIBRARY_DIR})
 include_directories(SYSTEM ${RESTBED_INCLUDE_DIR})
+
+# SimpleJSON
+add_subdirectory(lib/simplejson)
 
 #################################################
 # Compiling
@@ -93,3 +97,4 @@ endif()
 #################################################
 
 target_link_libraries(${PROJECT_NAME} ${RESTBED_LIB})
+target_link_libraries(${PROJECT_NAME} simplejson)
