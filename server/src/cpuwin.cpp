@@ -1,9 +1,9 @@
 #include "../header/header.h"
 
 using namespace std;
-using namespace Microsoft::Win32;
-using namespace System;
-using namespace Runtime::InteropServices;
+//using namespace Microsoft::Win32;
+//using namespace System;
+//using namespace Runtime::InteropServices;
 
 Cpuwin::Cpuwin()
 {
@@ -28,7 +28,7 @@ uint64_t Cpuwin::getFreq()
 
 string Cpuwin::getCpuInfo()
 {
-    RegistryKey^ rk = nullptr;
+   /* RegistryKey^ rk = nullptr;
 
     rk = Registry::LocalMachine->OpenSubKey("hardware\\DESCRIPTION\\System\\CentralProcessor\\0", false);
     if (rk==nullptr)
@@ -43,6 +43,8 @@ string Cpuwin::getCpuInfo()
         const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(def)).ToPointer();
         cpuinfo = chars;
         Marshal::FreeHGlobal(IntPtr((void*)chars));
-    }
+    }*/
+	cpuinfo = "test";
+
     return cpuinfo;
 }
