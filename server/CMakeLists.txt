@@ -26,8 +26,9 @@ add_subdirectory(lib/simplejson)
 
 if(WIN32)
 
-  set(CMAKE_CXX_FLAGS "/clr")
-  set(CMAKE_CXX_FLAGS_DEBUG "")
+  set(CMAKE_CXX_FLAGS "/D_WIN32 /DWIN32 /D_WINDOWS /EHsc /W3")
+  set(CMAKE_CXX_FLAGS_DEBUG "/MDd")
+  set(CMAKE_CXX_FLAGS_RELEASE "/MD")
   add_executable(
     ${PROJECT_NAME}
 
