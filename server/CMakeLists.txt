@@ -5,6 +5,7 @@ project(myconfigserver)
 # OPTIONS
 #################################################
 
+set(CMAKE_INSTALL_PREFIX "${PROJECT_SOURCE_DIR}/bin" CACHE PATH "Program install directory" FORCE)
 set(RESTBED_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/lib/restbed/distribution/include" CACHE PATH "Restbed library include directory")
 set(RESTBED_LIBRARY_DIR "${PROJECT_SOURCE_DIR}/lib/restbed/distribution/library" CACHE PATH "Restbed library binary directory")
 
