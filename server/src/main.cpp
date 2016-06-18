@@ -30,10 +30,9 @@ string ws2s(const std::wstring& wstr)
 void api_cpu_handler(const shared_ptr<restbed::Session> session)
 {
   Cpu *cpu;
-  JSONObject  obj;
-  JSONValue   *output;
-  wstring     outputString;
-  ostringstream stringStream;
+  JSONObject obj;
+  JSONValue *output;
+  wstring outputString;
   wstring cpuModel;
   double cpuCount;
 
@@ -43,9 +42,7 @@ void api_cpu_handler(const shared_ptr<restbed::Session> session)
   obj[L"model"] = new JSONValue(cpuModel);
   obj[L"count"] = new JSONValue(cpuCount);
   output = new JSONValue(obj);
-  outputString = output->Stringify();
-  stringStream << outputString.length();
-  session->close(restbed::OK, ws2s(outputString), { { "Content-Type", "application/json" } });
+  session->close(restbed::OK, ws2s(output->Stringify()), { { "Content-Type", "application/json" } });
 }
 void api_hdd_handler(const shared_ptr<restbed::Session> session)
 {
