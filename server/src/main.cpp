@@ -50,7 +50,23 @@ void api_hdd_handler(const shared_ptr<restbed::Session> session)
 }
 void api_ram_handler(const shared_ptr<restbed::Session> session)
 {
-  session->close(restbed::OK, "ram", { { "Content-Length", "3" } });
+  Memory *memory;
+  JSONObject obj;
+  JSONValue *output;
+  wstring outputString;
+  double memoryFreeSpace;
+  double memoryTotalSpace;
+  double memoryUsage;
+
+  memory = Memory::getInstance();
+  memoryFreeSpace = memory->getFreeRam();
+  memoryTotalSpace = memory->getTotalRam();
+  memoryUsage = memory->getPourcentRam();
+  obj[L"free"] = new JSONValue(memoryFreeSpace);
+  obj[L"total"] = new JSONValue(memoryTotalSpace);
+  obj[L"usage"] = new JSONValue(memoryUsage);
+  output = new JSONValue(obj);
+  session->close(restbed::OK, ws2s(output->Stringify()), { { "Content-Type", "application/json" } });
 }
 void api_os_handler(const shared_ptr<restbed::Session> session)
 {

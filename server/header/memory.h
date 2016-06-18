@@ -14,6 +14,7 @@ class Memory
     virtual uint64_t getTotalRam() = 0;
     virtual unsigned int getFreeRam() = 0;
     virtual unsigned int getPourcentRam() = 0;
+    static Memory *Memory::getInstance();
 };
 
 #endif
