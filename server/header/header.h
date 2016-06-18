@@ -5,11 +5,13 @@
 #include <string>
 #include <restbed>
 #include <sstream>
+#include <vector>
 #include "../lib/simplejson/JSON.h"
 #include "cpu.h"
 #include "hdd.h"
 #include "memory.h"
 #include "os.h"
+#include "webservice.h"
 #if defined(_WIN32)
   #include <windows.h>
   #include "cpuwin.hpp"

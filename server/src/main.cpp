@@ -1,6 +1,5 @@
 #include "../header/header.h"
 
-using namespace restbed;
 using namespace std;
 
 /**
@@ -15,7 +14,7 @@ string ws2s(const std::wstring& wstr)
 
     return converterX.to_bytes(wstr);
 }
-void api_cpu_handler(const shared_ptr<Session> session)
+void api_cpu_handler(const shared_ptr<restbed::Session> session)
 {
   JSONObject  obj;
   JSONValue   *output;
@@ -27,48 +26,30 @@ void api_cpu_handler(const shared_ptr<Session> session)
   output = new JSONValue(obj);
   outputString = output->Stringify();
   stringStream << outputString.length();
-  session->close(OK, ws2s(outputString), { { "Content-Type", "application/json" } });
+  session->close(restbed::OK, ws2s(outputString), { { "Content-Type", "application/json" } });
 }
-void api_hdd_handler(const shared_ptr<Session> session)
+void api_hdd_handler(const shared_ptr<restbed::Session> session)
 {
-  session->close(OK, "hdd", { { "Content-Length", "3" } });
+  session->close(restbed::OK, "hdd", { { "Content-Length", "3" } });
 }
-void api_ram_handler(const shared_ptr<Session> session)
+void api_ram_handler(const shared_ptr<restbed::Session> session)
 {
-  session->close(OK, "ram", { { "Content-Length", "3" } });
+  session->close(restbed::OK, "ram", { { "Content-Length", "3" } });
 }
-void api_os_handler(const shared_ptr<Session> session)
+void api_os_handler(const shared_ptr<restbed::Session> session)
 {
-  session->close(OK, "os", { { "Content-Length", "2" } });
+  session->close(restbed::OK, "os", { { "Content-Length", "2" } });
 }
 void api_init()
 {
-  auto cpuResource = make_shared<Resource>();
-  cpuResource->set_path("/cpu");
-  cpuResource->set_method_handler("GET", api_cpu_handler);
+  Webservice w;
 
-  auto hddResource = make_shared<Resource>();
-  hddResource->set_path("/hdd");
-  hddResource->set_method_handler("GET", api_hdd_handler);
-
-  auto ramResource = make_shared<Resource>();
-  ramResource->set_path("/ram");
-  ramResource->set_method_handler("GET", api_ram_handler);
-
-  auto osResource = make_shared<Resource>();
-  osResource->set_path("/os");
-  osResource->set_method_handler("GET", api_os_handler);
-
-  auto settings = make_shared<Settings>();
-  settings->set_port(1337);
-  settings->set_default_header("Connection", "close");
-
-  Service service;
-  service.publish(cpuResource);
-  service.publish(hddResource);
-  service.publish(ramResource);
-  service.publish(osResource);
-  service.start(settings);
+  w.addRoute("GET", "/cpu", api_cpu_handler);
+  w.addRoute("GET", "/hdd", api_hdd_handler);
+  w.addRoute("GET", "/os", api_os_handler);
+  w.addRoute("GET", "/ram", api_ram_handler);
+  w.setPort(3000);
+  w.start();
 }
 int main()
 {
