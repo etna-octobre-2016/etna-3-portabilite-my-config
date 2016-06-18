@@ -11,9 +11,9 @@ class Cpu
     std::string cpuinfo;
     
     public:
-    //Cpu();
     virtual unsigned int getCoresCount() = 0;
     virtual uint64_t getFreq() = 0;
     virtual std::string getCpuInfo() = 0;
+    static Cpu *getInstance();
 };
 #endif

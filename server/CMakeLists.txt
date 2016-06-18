@@ -42,7 +42,8 @@ if(WIN32)
     header/webservice.h
     header/windowsos.hpp
 
-    src/cpuwin.cpp
+    src/cpu.cpp
+	src/cpuwin.cpp
     src/hdd.cpp
     src/main.cpp
     src/memorywin.cpp
@@ -66,6 +67,7 @@ elseif(APPLE)
     header/os.h
 	header/webservice.h
 
+	src/cpu.cpp
     src/cpumac.cpp
     src/hdd.cpp
     src/macos.cpp
@@ -90,6 +92,7 @@ else(UNIX)
     header/linuxos.hpp
 	header/webservice.h
 
+	src/cpu.cpp
     src/cpulinux.cpp
     src/hdd.cpp
     src/linuxos.cpp
