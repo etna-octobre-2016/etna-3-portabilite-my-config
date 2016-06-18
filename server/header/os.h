@@ -11,6 +11,7 @@ class Os
     
     public:
     virtual std::string getName() = 0; 
-    virtual int getArchitecture() = 0;   
+    virtual int getArchitecture() = 0;
+    static Os *Os::getInstance();
 };
 #endif

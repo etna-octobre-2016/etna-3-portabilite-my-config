@@ -57,7 +57,20 @@ void api_ram_handler(const shared_ptr<restbed::Session> session)
 }
 void api_os_handler(const shared_ptr<restbed::Session> session)
 {
-  session->close(restbed::OK, "os", { { "Content-Length", "2" } });
+  Os *os;
+  JSONObject obj;
+  JSONValue *output;
+  wstring outputString;
+  wstring osName;
+  double osArchitecture;
+
+  os = Os::getInstance();
+  osName = s2ws(os->getName());
+  osArchitecture = os->getArchitecture();
+  obj[L"name"] = new JSONValue(osName);
+  obj[L"architecture"] = new JSONValue(osArchitecture);
+  output = new JSONValue(obj);
+  session->close(restbed::OK, ws2s(output->Stringify()), { { "Content-Type", "application/json" } });
 }
 int main()
 {

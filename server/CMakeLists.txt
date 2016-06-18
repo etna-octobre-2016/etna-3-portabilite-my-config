@@ -47,6 +47,7 @@ if(WIN32)
     src/hdd.cpp
     src/main.cpp
     src/memorywin.cpp
+    src/os.cpp
 	src/webservice.cpp
     src/windowsos.cpp
   )
@@ -73,6 +74,7 @@ elseif(APPLE)
     src/macos.cpp
     src/main.cpp
     src/memorymac.cpp
+    src/os.cpp
 	src/webservice.cpp
   )
 
@@ -98,6 +100,7 @@ else(UNIX)
     src/linuxos.cpp
     src/main.cpp
     src/memorylinux.cpp
+    src/os.cpp
 	src/webservice.cpp
   )
 
