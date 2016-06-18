@@ -72,37 +72,9 @@ void api_init()
 }
 int main()
 {
-  api_init();
-    /* Connexion */
-    /*Socket sck;
-    sck.run();*/
-    
-   /* typedef vector<string> str_vec_t;
-    str_vec_t v1;    
-    v1.push_back("test");
-    v1.push_back("test2");
-    v1.push_back("test3");
-    
-    for (auto iterator it = v1.begin(); it != v1.end(); ++it)
-    {
-        string &el = *it;
-        cout << el << endl;
-    }
-    */
-    
-    /*json::value obj
-    obj[L"key1"] = json::value::boolean(false);
-    obj[L"key2"] = json::value::number(44);
-    obj[L"key3"] = json::value::string(U("str"));
-    
-    for(auto iter = obj.cbegin(); iter != obj.cend(); ++iter)
-    {
-        const json::value &str = iter->first;
-        const json::value &v = iter->second;
-        
-        cout << L"String: " << str.as_string() << L", Value: " << v.to_string() << endl;
-    }*/
-    
+  //api_init();
+
+
     /*Ios ios;
     cout << ios.*/
     Os *ptr_os;
@@ -142,6 +114,7 @@ int main()
     cout << "HDD informations: " << endl;
     cout << "TOTAL : " << hdd.getTotalCapacity() << " MO" << endl;   
     
+	system("pause");
     return 0;
 }
 

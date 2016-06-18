@@ -28,23 +28,23 @@ uint64_t Cpuwin::getFreq()
 
 string Cpuwin::getCpuInfo()
 {
-   /* RegistryKey^ rk = nullptr;
-
-    rk = Registry::LocalMachine->OpenSubKey("hardware\\DESCRIPTION\\System\\CentralProcessor\\0", false);
-    if (rk==nullptr)
-    {
-        Console::WriteLine("Registry key not found - aborting");
-        cpuinfo = "noinformations";
-    }
-    else
-    {
-        String^ valueName = "ProcessorNameString";
-        String^ def =(String^) rk->GetValue(valueName);   
-        const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(def)).ToPointer();
-        cpuinfo = chars;
-        Marshal::FreeHGlobal(IntPtr((void*)chars));
-    }*/
-	cpuinfo = "test";
+	int CPUInfo[4] = { -1 };
+	
+	unsigned   nExIds, i = 0;
+	char CPUBrandString[0x40];
+	__cpuid(CPUInfo, 0x80000000);
+	nExIds = CPUInfo[0];
+	for (i = 0x80000000; i <= nExIds; ++i)
+	{
+		__cpuid(CPUInfo, i);
+		if (i == 0x80000002)
+			memcpy(CPUBrandString, CPUInfo, sizeof(CPUInfo));
+		else if (i == 0x80000003)
+			memcpy(CPUBrandString + 16, CPUInfo, sizeof(CPUInfo));
+		else if (i == 0x80000004)
+			memcpy(CPUBrandString + 32, CPUInfo, sizeof(CPUInfo));
+	}
+	cpuinfo = CPUBrandString;
 
     return cpuinfo;
 }

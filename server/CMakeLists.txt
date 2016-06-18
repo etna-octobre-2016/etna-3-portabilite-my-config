@@ -46,6 +46,7 @@ if(WIN32)
     src/main.cpp
     src/memorywin.cpp
     src/windowsos.cpp
+	src/winhdd.cpp
   )
 
 elseif(APPLE)
