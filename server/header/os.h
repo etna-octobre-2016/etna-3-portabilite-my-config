@@ -8,10 +8,10 @@ class Os
     protected:
     std::string name;
     int architecture;
-    
+
     public:
-    virtual std::string getName() = 0; 
+    virtual std::string getName() = 0;
     virtual int getArchitecture() = 0;
-    static Os *Os::getInstance();
+    static Os *getInstance();
 };
 #endif
