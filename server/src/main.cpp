@@ -80,22 +80,27 @@ int main()
     Os *ptr_os;
     Cpu *ptr_cpu;
     Memory *ptr_mem;
+	Hdd *ptr_hdd;
     #ifdef _WIN32
         Windowsos os;
         Cpuwin cpu;
         Memorywin mem;
+		Winhdd hdd;
     #elif __APPLE__
         Macos os;
         Cpumac cpu;
         Memorymac mem;
+		Machdd hdd;
     #else
         Linuxos os;
         Cpulinux cpu;
         Memorylinux mem;
+		Linuxhdd hdd;
     #endif
     ptr_os = &os;
     ptr_cpu = &cpu;
     ptr_mem = &mem;
+	ptr_hdd = &hdd;
     
     cout << "CPU informations:" << endl;
     cout << ptr_cpu->getCpuInfo() << endl;
@@ -110,10 +115,17 @@ int main()
     cout << "Free RAM: " << ptr_mem->getFreeRam() << " KB" << endl;
     cout << ptr_mem->getPourcentRam() << "% used Ram" << endl; 
     cout << endl;
-    Hdd hdd;
     cout << "HDD informations: " << endl;
-    cout << "TOTAL : " << hdd.getTotalCapacity() << " MO" << endl;   
-    
+    cout << "TOTAL: " << ptr_hdd->getTotalCapacity() << " MO" << endl;
+	cout << "Used: " << ptr_hdd->getUsedCapacity() << " MO" << endl;
+	cout << "List: " << endl;
+
+	for (size_t i = 0, size = ptr_hdd->getListHardDrive().size(); i < size; ++i)
+	{
+		cout << ptr_hdd->getListHardDrive()[i] << endl;
+	}
+	
+
 	system("pause");
     return 0;
 }
@@ -152,10 +164,7 @@ int main()
                     cout << temp <<  " Ram drive" << endl;
                     break;
             }
-            GetDiskFreeSpaceEx(temp, 0, (PULARGE_INTEGER)&ttlspc, (PULARGE_INTEGER)&frspc);
-            cout << "TOTAL : " << ttlspc/1024/1024 << " MO" << endl;
-            cout << "libre : " << frspc/1024/1024 << " MO" << endl;
-            temp += lstrlen(temp) + 1;
+
         }
         
         

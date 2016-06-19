@@ -1,9 +1,6 @@
 #include "../header/header.h"
 
 using namespace std;
-//using namespace Microsoft::Win32;
-//using namespace System;
-//using namespace Runtime::InteropServices;
 
 Cpuwin::Cpuwin()
 {

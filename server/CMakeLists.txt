@@ -40,9 +40,9 @@ if(WIN32)
     header/memorywin.hpp
     header/os.h
     header/windowsos.hpp
+	header/winhdd.hpp
 
     src/cpuwin.cpp
-    src/hdd.cpp
     src/main.cpp
     src/memorywin.cpp
     src/windowsos.cpp
@@ -63,12 +63,13 @@ elseif(APPLE)
     header/memory.h
     header/memorymac.hpp
     header/os.h
+	header/machdd.hpp
 
     src/cpumac.cpp
-    src/hdd.cpp
     src/macos.cpp
     src/main.cpp
     src/memorymac.cpp
+	src/machdd.cpp
   )
 
 else(UNIX)
@@ -85,12 +86,13 @@ else(UNIX)
     header/memorylinux.hpp
     header/os.h
     header/linuxos.hpp
+	header/linuxhdd.hpp
 
     src/cpulinux.cpp
-    src/hdd.cpp
     src/linuxos.cpp
     src/main.cpp
     src/memorylinux.cpp
+	src/linuxhdd.cpp
   )
 
 endif()
