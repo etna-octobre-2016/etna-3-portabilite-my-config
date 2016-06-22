@@ -22,7 +22,7 @@ unsigned int Memorywin::getFreeRam()
     return freeram;
 }
 
-unsigned int Memory::getPourcentRam()
+unsigned int Memorywin::getPourcentRam()
 {
     pourcentusedram = statex.dwMemoryLoad;
     return pourcentusedram;
