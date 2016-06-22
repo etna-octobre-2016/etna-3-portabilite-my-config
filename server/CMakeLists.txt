@@ -41,16 +41,17 @@ if(WIN32)
     header/os.h
     header/webservice.h
     header/windowsos.hpp
+    header/winhdd.hpp
 
     src/cpu.cpp
-	src/cpuwin.cpp
-    src/hdd.cpp
+    src/cpuwin.cpp
     src/main.cpp
     src/memory.cpp
     src/memorywin.cpp
     src/os.cpp
-	src/webservice.cpp
+    src/webservice.cpp
     src/windowsos.cpp
+    src/winhdd.cpp
   )
 
 elseif(APPLE)
@@ -64,20 +65,21 @@ elseif(APPLE)
     header/hdd.h
     header/header.h
     header/macos.hpp
+    header/machdd.hpp
     header/memory.h
     header/memorymac.hpp
     header/os.h
-	header/webservice.h
+    header/webservice.h
 
-	src/cpu.cpp
+    src/cpu.cpp
     src/cpumac.cpp
-    src/hdd.cpp
     src/macos.cpp
+    src/machdd.cpp
     src/main.cpp
     src/memory.cpp
     src/memorymac.cpp
     src/os.cpp
-	src/webservice.cpp
+    src/webservice.cpp
   )
 
 else(UNIX)
@@ -90,21 +92,22 @@ else(UNIX)
     header/cpulinux.hpp
     header/hdd.h
     header/header.h
+    header/linuxhdd.hpp
+    header/linuxos.hpp
     header/memory.h
     header/memorylinux.hpp
     header/os.h
-    header/linuxos.hpp
-	header/webservice.h
+    header/webservice.h
 
-	src/cpu.cpp
+    src/cpu.cpp
     src/cpulinux.cpp
-    src/hdd.cpp
+    src/linuxhdd.cpp
     src/linuxos.cpp
     src/main.cpp
     src/memory.cpp
     src/memorylinux.cpp
     src/os.cpp
-	src/webservice.cpp
+    src/webservice.cpp
   )
 
 endif()

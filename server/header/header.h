@@ -17,6 +17,7 @@
   #include "cpuwin.hpp"
   #include "memorywin.hpp"
   #include "windowsos.hpp"
+  #include "winhdd.hpp"
 #elif defined(__APPLE__)
   #include <sys/mount.h>
   #include <sys/param.h>
@@ -27,6 +28,7 @@
   #include "cpumac.hpp"
   #include "macos.hpp"
   #include "memorymac.hpp"
+  #include "machdd.hpp"
 #else
   #include <sys/mount.h>
   #include <sys/param.h>
@@ -37,5 +39,6 @@
   #include "cpulinux.hpp"
   #include "linuxos.hpp"
   #include "memorylinux.hpp"
+  #include "linuxhdd.hpp"
 #endif
 #endif
