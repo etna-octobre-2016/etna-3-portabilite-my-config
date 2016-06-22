@@ -35,12 +35,15 @@ void api_cpu_handler(const shared_ptr<restbed::Session> session)
   wstring outputString;
   wstring cpuModel;
   double cpuCount;
+  double cpuFrequency;
 
   cpu = Cpu::getInstance();
   cpuModel = s2ws(cpu->getCpuInfo());
   cpuCount = cpu->getCoresCount();
+  cpuFrequency = cpu->getFreq();
   obj[L"model"] = new JSONValue(cpuModel);
   obj[L"count"] = new JSONValue(cpuCount);
+  obj[L"frequency"] = new JSONValue(cpuFrequency);
   output = new JSONValue(obj);
   session->close(restbed::OK, ws2s(output->Stringify()), { { "Content-Type", "application/json" } });
 }
