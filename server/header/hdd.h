@@ -2,8 +2,6 @@
 #define _HDD_H_
 
 #include "header.h"
-#include <vector>
-
 
 class Hdd
 {

@@ -14,6 +14,7 @@
 #include "webservice.h"
 #if defined(_WIN32)
   #include <windows.h>
+  #include <VersionHelpers.h>
   #include "cpuwin.hpp"
   #include "memorywin.hpp"
   #include "windowsos.hpp"

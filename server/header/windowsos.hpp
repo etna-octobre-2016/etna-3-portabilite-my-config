@@ -1,7 +1,7 @@
 #ifndef _WINDOWSOS_H_
 #define _WINDOWSOS_H_
 
-#include "os.h"
+#include "header.h"
 
 class Windowsos : public Os
 {

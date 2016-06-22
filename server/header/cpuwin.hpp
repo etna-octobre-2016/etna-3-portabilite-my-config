@@ -1,7 +1,7 @@
 #ifndef _CPUWIN_H_
 #define _CPUWIN_H_
 
-#include "cpu.h"
+#include "header.h"
 
 class Cpuwin : public Cpu
 {

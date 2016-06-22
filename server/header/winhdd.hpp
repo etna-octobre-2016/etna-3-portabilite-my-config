@@ -1,7 +1,7 @@
 #ifndef _HDDWIN_H_
 #define _HDDWIN_H_
 
-#include "hdd.h"
+#include "header.h"
 
 class Winhdd : public Hdd
 {

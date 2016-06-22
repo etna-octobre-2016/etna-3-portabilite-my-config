@@ -1,12 +1,6 @@
 #include "../header/header.h"
-#include <iostream>
-#include <VersionHelpers.h>
-using namespace std;
 
-//using namespace Microsoft::Win32;
-//using namespace System;
-//using namespace Runtime::InteropServices;
-//using namespace System::Management::Automation;
+using namespace std;
 
 Windowsos::Windowsos()
 {
