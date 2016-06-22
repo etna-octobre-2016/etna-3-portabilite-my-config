@@ -32,7 +32,6 @@ void api_cpu_handler(const shared_ptr<restbed::Session> session)
   Cpu *cpu;
   JSONObject obj;
   JSONValue *output;
-  wstring outputString;
   wstring cpuModel;
   double cpuCount;
   double cpuFrequency;
@@ -56,7 +55,6 @@ void api_ram_handler(const shared_ptr<restbed::Session> session)
   Memory *memory;
   JSONObject obj;
   JSONValue *output;
-  wstring outputString;
   double memoryFreeSpace;
   double memoryTotalSpace;
   double memoryUsage;
@@ -76,7 +74,6 @@ void api_os_handler(const shared_ptr<restbed::Session> session)
   Os *os;
   JSONObject obj;
   JSONValue *output;
-  wstring outputString;
   wstring osName;
   double osArchitecture;
 
