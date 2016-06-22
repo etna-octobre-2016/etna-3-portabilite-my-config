@@ -14,6 +14,7 @@ class Hdd
     virtual uint64_t getTotalCapacity() = 0;
     virtual uint64_t getUsedCapacity() = 0;
 	virtual std::vector<std::string> getListHardDrive() = 0;
+    static Hdd *getInstance();
 };
 
 #endif

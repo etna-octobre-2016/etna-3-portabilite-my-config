@@ -48,7 +48,29 @@ void api_cpu_handler(const shared_ptr<restbed::Session> session)
 }
 void api_hdd_handler(const shared_ptr<restbed::Session> session)
 {
-  session->close(restbed::OK, "hdd", { { "Content-Length", "3" } });
+  Hdd *hdd;
+  JSONArray devices;
+  JSONObject obj;
+  JSONObject deviceData;
+  JSONValue *output;
+  double hddTotal;
+  double hddUsage;
+  vector<string> hddDevices;
+
+  hdd = Hdd::getInstance();
+  hddTotal = hdd->getTotalCapacity();
+  hddUsage = hdd->getUsedCapacity();
+  hddDevices = hdd->getListHardDrive();
+  obj[L"total"] = new JSONValue(hddTotal);
+  obj[L"usage"] = new JSONValue(hddUsage);
+  for (vector<string>::iterator it = hddDevices.begin(); it != hddDevices.end(); ++it)
+  {
+    deviceData[L"name"] = new JSONValue(s2ws(*it));
+    devices.push_back(new JSONValue(deviceData));
+  }
+  obj[L"devices"] = new JSONValue(devices);
+  output = new JSONValue(obj);
+  session->close(restbed::OK, ws2s(output->Stringify()), { { "Content-Type", "application/json" } });
 }
 void api_ram_handler(const shared_ptr<restbed::Session> session)
 {

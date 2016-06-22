@@ -45,6 +45,7 @@ if(WIN32)
 
     src/cpu.cpp
     src/cpuwin.cpp
+    src/hdd.cpp
     src/main.cpp
     src/memory.cpp
     src/memorywin.cpp
@@ -73,6 +74,7 @@ elseif(APPLE)
 
     src/cpu.cpp
     src/cpumac.cpp
+    src/hdd.cpp
     src/macos.cpp
     src/machdd.cpp
     src/main.cpp
@@ -101,6 +103,7 @@ else(UNIX)
 
     src/cpu.cpp
     src/cpulinux.cpp
+    src/hdd.cpp
     src/linuxhdd.cpp
     src/linuxos.cpp
     src/main.cpp
