@@ -1,0 +1,1 @@
+Ouvrir le projet avec QT - "port_client.pro"
