@@ -109,7 +109,7 @@ void api_os_handler(const shared_ptr<restbed::Session> session)
 }
 int main()
 {
-  /*Webservice w;
+  Webservice w;
 
   w.addRoute("GET", "/cpu", api_cpu_handler);
   w.addRoute("GET", "/hdd", api_hdd_handler);
@@ -117,19 +117,6 @@ int main()
   w.addRoute("GET", "/ram", api_ram_handler);
   w.setPort(3000);
   w.start();
-   */
-    Hdd *ptr_hdd;
-    Machdd hdd;
-    ptr_hdd = &hdd;
-    cout << "HDD informations: " << endl;
-    cout << "TOTAL: " << ptr_hdd->getTotalCapacity() << " Octets" << endl;
-    cout << "Used: " << ptr_hdd->getUsedCapacity() << " Octets" << endl;
-    cout << "List: " << endl;
-    
-    for (size_t i = 0, size = ptr_hdd->getListHardDrive().size(); i < size; ++i)
-    {
-        cout << ptr_hdd->getListHardDrive()[i];
-    }
-    cout << endl;
+
   return 0;
 }
