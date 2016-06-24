@@ -122,8 +122,8 @@ int main()
     Machdd hdd;
     ptr_hdd = &hdd;
     cout << "HDD informations: " << endl;
-    cout << "TOTAL: " << ptr_hdd->getTotalCapacity() << " MO" << endl;
-    cout << "Used: " << ptr_hdd->getUsedCapacity() << " MO" << endl;
+    cout << "TOTAL: " << ptr_hdd->getTotalCapacity() << " Octets" << endl;
+    cout << "Used: " << ptr_hdd->getUsedCapacity() << " Octets" << endl;
     cout << "List: " << endl;
     
     for (size_t i = 0, size = ptr_hdd->getListHardDrive().size(); i < size; ++i)
