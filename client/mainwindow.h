@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QInputDialog>
 #include "about.h"
+#include "request.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,13 +20,16 @@ public:
     void initTab();
     void setUrlApi(std::string new_url_api);
 
+
 private:
     Ui::MainWindow *ui;
     std::string url_api;
 
 private slots:
     void on_actionSetIp_triggered();
-    void on_actionAbout_triggered();
+    void loadCpu(QNetworkReply* reply);
+    void loadOs(QNetworkReply* reply);
+    void loadRam(QNetworkReply* reply);
 };
 
 #endif // MAINWINDOW_H
