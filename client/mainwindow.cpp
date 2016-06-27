@@ -1,14 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QtNetwork>
-#include <QJsonDocument>
-#include <QJsonObject>
-
-#include <QLineSeries>
-#include <QChart>
-#include <QChartView>
-
-#include <QDateTime>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -175,4 +166,21 @@ void MainWindow::on_actionSetIp_triggered()
     this->url_api = new_url_api;
     this->saveSettings();
     this->initTab();
+}
+
+void MainWindow::on_actionExportData_triggered()
+{
+    QString filename = QFileDialog::getSaveFileName(this, "Exporter les données", "export.csv", "CSV files (.csv)", 0, 0);
+    QFile data(filename);
+    if(data.open(QFile::WriteOnly |QFile::Truncate))
+    {
+        QTextStream output(&data);
+        output << "architecture;"<< ui->architecture_value->text() << endl;
+        output << "coeurs;"<< ui->number_cores_value->text() << endl;
+        output << "systeme d'exploitation;"<< ui->os_value->text() << endl;
+        output << "model;"<< ui->cpu_value->text() << endl;
+        output << "RAM totale;"<< ui->ram_tot_value->text() << endl;
+        output << "RAM disponible;"<< ui->ram_free_value->text() << endl;
+        output << "RAM utilisee;"<< ui->ram_used_value->text();
+    }
 }
