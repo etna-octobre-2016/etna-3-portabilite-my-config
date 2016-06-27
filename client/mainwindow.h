@@ -21,15 +21,18 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void initTab();
-    void setUrlApi(std::string new_url_api);
+    void setUrlApi(QString new_url_api);
 
 
 private:
     Ui::MainWindow *ui;
-    std::string url_api;
+    QString url_api;
+    int seconds;
     QChartView *chartView;
     QJsonObject dataRam;
     void updateChart();
+    void loadSettings();
+    void saveSettings();
 
 private slots:
     void on_actionSetIp_triggered();

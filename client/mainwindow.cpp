@@ -15,8 +15,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    this->loadSettings();
+    this->saveSettings();
+
     this->initTab();
-    this->url_api = "";
 
     //Ram data & graph
     QJsonObject dataRam;
@@ -32,25 +35,37 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(refreshRam()));
-    timer->start(5000);
+    timer->start(this->seconds);
+}
 
+void MainWindow::loadSettings()
+{
+    QSettings settings("settings.ini", QSettings::IniFormat);
+    this->url_api = settings.value("url_api").toString();
+    this->seconds = settings.value("seconds", 5000).toString().toInt();
+}
 
+void MainWindow::saveSettings()
+{
+    QSettings settings("settings.ini", QSettings::IniFormat);
+    settings.setValue("url_api", this->url_api);
+    settings.setValue("seconds", this->seconds);
 }
 
 void MainWindow::initTab()
 {
-    if (this->url_api != "") {
+    if (this->url_api.toStdString() != "") {
 
         Request* request_cpu = new Request();
-        request_cpu->get(QString::fromStdString(this->url_api + "/cpu"));
+        request_cpu->get(this->url_api + QString::fromStdString("/cpu"));
         connect(request_cpu->manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loadCpu(QNetworkReply*)));
 
         Request* request_os = new Request();
-        request_os->get(QString::fromStdString(this->url_api + "/os"));
+        request_os->get(this->url_api + QString::fromStdString("/os"));
         connect(request_os->manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loadOs(QNetworkReply*)));
 
         Request* request_ram = new Request();
-        request_ram->get(QString::fromStdString(this->url_api + "/ram"));
+        request_ram->get(this->url_api + QString::fromStdString("/ram"));
         connect(request_ram->manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loadRam(QNetworkReply*)));
     }
 }
@@ -59,7 +74,7 @@ void MainWindow::refreshRam()
 {
     if (this->url_api != "") {
         Request* request_ram = new Request();
-        request_ram->get(QString::fromStdString(this->url_api + "/ram"));
+        request_ram->get(this->url_api + QString::fromStdString("/ram"));
         connect(request_ram->manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loadRam(QNetworkReply*)));
     }
 }
@@ -149,12 +164,6 @@ void MainWindow::updateChart()
     chartView->chart()->createDefaultAxes();
 }
 
-void MainWindow::setUrlApi(std::string new_url_api)
-{
-    this->url_api = new_url_api;
-    this->initTab();
-}
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -162,7 +171,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionSetIp_triggered()
 {
-    QString new_url_api = QInputDialog::getText(this, "URL de l'API", "Quelle est l'URL de l'API ?");
-    this->url_api = new_url_api.toStdString();
+    QString new_url_api = QInputDialog::getText(this, "URL de l'API", "Quelle est l'URL de l'API ?", QLineEdit::Normal, this->url_api);
+    this->url_api = new_url_api;
+    this->saveSettings();
     this->initTab();
 }
