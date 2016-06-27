@@ -1,12 +1,12 @@
 #ifndef _HEADER_H_
 #define _HEADER_H_
-#include <locale>
 #include <iostream>
 #include <string>
 #include <restbed>
 #include <sstream>
 #include <vector>
 #include "../lib/simplejson/JSON.h"
+#include "../lib/utf8/utf8.h"
 #include "cpu.h"
 #include "hdd.h"
 #include "memory.h"

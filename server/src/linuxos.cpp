@@ -4,18 +4,19 @@ using namespace std;
 
 Linuxos::Linuxos()
 {
-    
 }
 
 string Linuxos::getName()
 {
-    name = "";
-    
-    return name;
+    return basic_string<char, char_traits<char>, allocator<char>>();
 }
 
 int Linuxos::getArchitecture()
 {
-    architecture = 0;
-    return architecture;
+    return 64;
 }
+
+
+
+
+

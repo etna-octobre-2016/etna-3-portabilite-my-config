@@ -20,6 +20,9 @@ include_directories(SYSTEM ${RESTBED_INCLUDE_DIR})
 # SimpleJSON
 add_subdirectory(lib/simplejson)
 
+# UTF8
+include_directories(lib/utf8)
+
 #################################################
 # Compiling
 #################################################
