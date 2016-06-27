@@ -40,7 +40,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
@@ -161,18 +161,16 @@
         <attribute name="title">
          <string>Stockage</string>
         </attribute>
-        <widget class="QLabel" name="label_2">
+        <widget class="QWidget" name="verticalLayoutWidget_2">
          <property name="geometry">
           <rect>
-           <x>60</x>
-           <y>20</y>
-           <width>59</width>
-           <height>16</height>
+           <x>10</x>
+           <y>10</y>
+           <width>731</width>
+           <height>431</height>
           </rect>
          </property>
-         <property name="text">
-          <string>456</string>
-         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2"/>
         </widget>
        </widget>
       </widget>
