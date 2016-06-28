@@ -8,7 +8,9 @@ Linuxos::Linuxos()
 
 string Linuxos::getName()
 {
-    return basic_string<char, char_traits<char>, allocator<char>>();
+    Command cmd("lsb_release -ds");
+
+    return cmd.getStdout();
 }
 
 int Linuxos::getArchitecture()

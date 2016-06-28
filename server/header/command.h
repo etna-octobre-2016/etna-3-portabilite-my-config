@@ -14,6 +14,11 @@ public:
     Command(const string &commandString);
     ~Command();
     string getStdout();
+    friend ostream &operator<<(ostream &out, Command &c)
+    {
+        out << c.getStdout();
+        return out;
+    }
 };
 
 #endif

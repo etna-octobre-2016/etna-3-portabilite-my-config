@@ -31,15 +31,11 @@
   #include "memorymac.hpp"
   #include "machdd.hpp"
 #else
-  #include <sys/mount.h>
-  #include <sys/param.h>
-  #include <sys/sysctl.h>
-  #include <sys/types.h>
-  #include <sys/utsname.h>
-  #include <unistd.h>
+  #include <stdio.h>
+  #include "command.h"
   #include "cpulinux.hpp"
+  #include "linuxhdd.hpp"
   #include "linuxos.hpp"
   #include "memorylinux.hpp"
-  #include "linuxhdd.hpp"
 #endif
 #endif

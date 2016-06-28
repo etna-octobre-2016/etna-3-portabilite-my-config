@@ -17,9 +17,13 @@ Command::~Command()
 string Command::getStdout()
 {
     stringstream output;
+    string outputStr;
+
     while (fgets(this->buffer, sizeof(this->buffer), this->fd) != NULL)
     {
         output << this->buffer;
     }
-    return output.str();
+    outputStr = output.str();
+    outputStr.pop_back();
+    return outputStr;
 }
