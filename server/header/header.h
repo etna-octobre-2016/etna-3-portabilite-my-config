@@ -32,6 +32,7 @@
   #include "machdd.hpp"
 #else
   #include <stdio.h>
+  #include <sys/sysinfo.h>
   #include <sys/utsname.h>
   #include "command.h"
   #include "cpulinux.hpp"

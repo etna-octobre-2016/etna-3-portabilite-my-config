@@ -4,23 +4,23 @@ using namespace std;
 
 Memorylinux::Memorylinux()
 {
+    sysinfo(&this->systemInfo);
 }
 
 uint64_t Memorylinux::getTotalRam()
 {
-    totalram = 0;
-    
-    return totalram;
+    return this->systemInfo.totalram;
 }
 
 unsigned int Memorylinux::getFreeRam()
 {
-    freeram = 0;
-    return freeram;
+    return static_cast<unsigned int>(this->systemInfo.freeram);
 }
 
 unsigned int Memorylinux::getPourcentRam()
 {
-    pourcentusedram = 0;
-    return pourcentusedram;
+    double percentage;
+
+    percentage = static_cast<double>(this->systemInfo.freeram) / static_cast<double>(this->systemInfo.totalram) * 100;
+    return static_cast<unsigned int>(percentage);
 }

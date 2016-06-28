@@ -4,8 +4,10 @@
 #include "memory.h"
 
 class Memorylinux : public Memory
-{   
-    public:
+{
+private:
+    struct sysinfo systemInfo;
+public:
     Memorylinux();
     uint64_t getTotalRam();
     unsigned int getFreeRam();
