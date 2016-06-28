@@ -93,6 +93,7 @@ else(UNIX)
   add_executable(
     ${PROJECT_NAME}
 
+    header/command.h
     header/cpu.h
     header/cpulinux.hpp
     header/hdd.h
@@ -104,6 +105,7 @@ else(UNIX)
     header/os.h
     header/webservice.h
 
+    src/command.cpp
     src/cpu.cpp
     src/cpulinux.cpp
     src/hdd.cpp
