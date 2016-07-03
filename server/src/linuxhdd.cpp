@@ -16,7 +16,21 @@ uint64_t LinuxHdd::getUsedCapacity()
 
 std::vector<std::string> LinuxHdd::getListHardDrive()
 {
-    return std::vector<std::string>();
+    char volumes [75];
+        
+    FILE *p = popen("df -l | awk '{print $1}'","r");
+    string temp;
+    while(fgets(volumes, sizeof(volumes) - 1, p) != NULL)
+    {
+        temp = volumes;
+        if (temp.find("/") == 0)
+        {
+            //*std::remove(volumes, strlen(volumes), '\n');            
+            hddList.push_back(volumes);
+        }
+    }
+    pclose(p);
+    return hddList;
 }
 
 
