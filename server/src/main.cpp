@@ -109,18 +109,7 @@ void api_os_handler(const shared_ptr<restbed::Session> session)
 }
 int main()
 {
-/*
-  Hdd *ptr;
-  LinuxHdd hdd;
-  ptr = &hdd;
 
-vector<string> v = ptr->getListHardDrive();
-
-  cout << "test " << endl;
-  for(int i = 0; i < v.size();i++)
-      cout << v[i] << endl;
-  cout << "fin" << endl;
-*/
   Webservice w;
 
   w.addRoute("GET", "/cpu", api_cpu_handler);

@@ -6,12 +6,24 @@ LinuxHdd::LinuxHdd()
 
 uint64_t LinuxHdd::getTotalCapacity()
 {
-    return 1;
+    char res [100];
+
+    FILE *pt = popen("df | grep '^/dev/[hs]d' | awk '{s+=$2} END {print s}'", "r");
+    fread(res, 1, sizeof(res) - 1, pt);
+    fclose(pt);
+    totalcapacity = ::atof(res);
+    return totalcapacity;
 }
 
 uint64_t LinuxHdd::getUsedCapacity()
 {
-    return 2;
+    char res [100];
+    
+    FILE *pt = popen("df | grep '^/dev/[hs]d' | awk '{s+=$3} END {print s}'", "r");
+    fread(res, 1, sizeof(res) - 1, pt);
+    fclose(pt);
+    usedCapacity = ::atof(res);
+    return usedCapacity;
 }
 
 std::vector<std::string> LinuxHdd::getListHardDrive()
