@@ -121,7 +121,6 @@ vector<string> v = ptr->getListHardDrive();
       cout << v[i] << endl;
   cout << "fin" << endl;
 */
-
   Webservice w;
 
   w.addRoute("GET", "/cpu", api_cpu_handler);

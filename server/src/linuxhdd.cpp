@@ -26,6 +26,7 @@ std::vector<std::string> LinuxHdd::getListHardDrive()
         if (temp.find("/") == 0)
         {
             //*std::remove(volumes, strlen(volumes), '\n');            
+            strtok(volumes, "\n");
             hddList.push_back(volumes);
         }
     }
