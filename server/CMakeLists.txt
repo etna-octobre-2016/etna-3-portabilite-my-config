@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5.2)
+cmake_minimum_required(VERSION 3.5.1)
 project(myconfigserver)
 
 #################################################
@@ -19,6 +19,9 @@ include_directories(SYSTEM ${RESTBED_INCLUDE_DIR})
 
 # SimpleJSON
 add_subdirectory(lib/simplejson)
+
+# UTF8
+include_directories(lib/utf8)
 
 #################################################
 # Compiling
@@ -90,6 +93,7 @@ else(UNIX)
   add_executable(
     ${PROJECT_NAME}
 
+    header/command.h
     header/cpu.h
     header/cpulinux.hpp
     header/hdd.h
@@ -101,6 +105,7 @@ else(UNIX)
     header/os.h
     header/webservice.h
 
+    src/command.cpp
     src/cpu.cpp
     src/cpulinux.cpp
     src/hdd.cpp

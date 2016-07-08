@@ -1,12 +1,12 @@
 #ifndef _HEADER_H_
 #define _HEADER_H_
-#include <codecvt>
 #include <iostream>
 #include <string>
 #include <restbed>
 #include <sstream>
 #include <vector>
 #include "../lib/simplejson/JSON.h"
+#include "../lib/utf8/utf8.h"
 #include "cpu.h"
 #include "hdd.h"
 #include "memory.h"
@@ -31,15 +31,13 @@
   #include "memorymac.hpp"
   #include "machdd.hpp"
 #else
-  #include <sys/mount.h>
-  #include <sys/param.h>
-  #include <sys/sysctl.h>
-  #include <sys/types.h>
+  #include <stdio.h>
+  #include <sys/sysinfo.h>
   #include <sys/utsname.h>
-  #include <unistd.h>
+  #include "command.h"
   #include "cpulinux.hpp"
+  #include "linuxhdd.hpp"
   #include "linuxos.hpp"
   #include "memorylinux.hpp"
-  #include "linuxhdd.hpp"
 #endif
 #endif
