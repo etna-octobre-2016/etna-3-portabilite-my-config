@@ -4,7 +4,15 @@
 #include <QMainWindow>
 #include <QInputDialog>
 #include <QtCharts>
-#include "about.h"
+#include <QtNetwork>
+#include <QJsonDocument>
+#include <QJsonObject>
+
+#include <QLineSeries>
+#include <QChart>
+#include <QChartView>
+
+#include <QDateTime>
 #include "request.h"
 
 using namespace QtCharts;
@@ -36,6 +44,7 @@ private:
 
 private slots:
     void on_actionSetIp_triggered();
+    void on_actionExportData_triggered();
     void loadCpu(QNetworkReply* reply);
     void loadOs(QNetworkReply* reply);
     void loadRam(QNetworkReply* reply);

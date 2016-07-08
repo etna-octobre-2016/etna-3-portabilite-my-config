@@ -17,12 +17,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    about.cpp \
     request.cpp
 
 HEADERS  += mainwindow.h \
-    about.h \
     request.h
 
-FORMS    += mainwindow.ui \
-    about.ui
+FORMS    += mainwindow.ui
+
+MAKEFILE = build/Makefile

@@ -40,7 +40,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
@@ -51,7 +51,7 @@
           <rect>
            <x>20</x>
            <y>10</y>
-           <width>401</width>
+           <width>711</width>
            <height>431</height>
           </rect>
          </property>
@@ -191,22 +191,16 @@
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="actionExportData"/>
    </widget>
-   <widget class="QMenu" name="menuIP_du_serveur">
+   <widget class="QMenu" name="menuURL_du_serveur">
     <property name="title">
-     <string>IP du serveur</string>
+     <string>URL du serveur</string>
     </property>
     <addaction name="actionSetIp"/>
    </widget>
-   <widget class="QMenu" name="menu_propos">
-    <property name="title">
-     <string>À propos</string>
-    </property>
-    <addaction name="a"/>
-   </widget>
    <addaction name="menuFichier"/>
-   <addaction name="menuIP_du_serveur"/>
-   <addaction name="menu_propos"/>
+   <addaction name="menuURL_du_serveur"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionRefresh">
@@ -216,7 +210,7 @@
   </action>
   <action name="actionSetIp">
    <property name="text">
-    <string>Saisir IP du serveur</string>
+    <string>Saisir URL du serveur</string>
    </property>
    <property name="toolTip">
     <string>Saisir l'IP du serveur</string>
@@ -225,6 +219,11 @@
   <action name="a">
    <property name="text">
     <string>En savoir plus...</string>
+   </property>
+  </action>
+  <action name="actionExportData">
+   <property name="text">
+    <string>Exporter les donnees</string>
    </property>
   </action>
  </widget>
