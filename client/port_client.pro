@@ -23,3 +23,5 @@ HEADERS  += mainwindow.h \
     request.h
 
 FORMS    += mainwindow.ui
+
+MAKEFILE = build/Makefile
