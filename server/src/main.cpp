@@ -9,10 +9,10 @@ using namespace std;
 */
 inline std::wstring s2ws(const std::string& str)
 {
-	typedef std::codecvt_utf8<wchar_t> convert_typeX;
-	std::wstring_convert<convert_typeX, wchar_t> converterX;
+  wstring output;
 
-	return converterX.from_bytes(str);
+  utf8::utf8to32(str.begin(), str.end(), back_inserter(output));
+  return output;
 }
 
 /**
@@ -22,10 +22,10 @@ inline std::wstring s2ws(const std::string& str)
  */
 string ws2s(const std::wstring& wstr)
 {
-    using convert_typeX = std::codecvt_utf8<wchar_t>;
-    std::wstring_convert<convert_typeX, wchar_t> converterX;
+  string output;
 
-    return converterX.to_bytes(wstr);
+  utf8::utf32to8(wstr.begin(), wstr.end(), back_inserter(output));
+  return output;
 }
 void api_cpu_handler(const shared_ptr<restbed::Session> session)
 {
@@ -109,6 +109,7 @@ void api_os_handler(const shared_ptr<restbed::Session> session)
 }
 int main()
 {
+
   Webservice w;
 
   w.addRoute("GET", "/cpu", api_cpu_handler);

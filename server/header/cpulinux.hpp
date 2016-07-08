@@ -1,7 +1,7 @@
 #ifndef _CPULINUX_H_
 #define _CPULINUX_H_
 
-#include "cpu.h"
+#include "header.h"
 
 class Cpulinux : public Cpu
 {
