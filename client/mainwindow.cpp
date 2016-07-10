@@ -58,6 +58,10 @@ void MainWindow::initTab()
         Request* request_ram = new Request();
         request_ram->get(this->url_api + QString::fromStdString("/ram"));
         connect(request_ram->manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loadRam(QNetworkReply*)));
+
+        Request* request_hdd = new Request();
+        request_hdd->get(this->url_api + QString::fromStdString("/hdd"));
+        connect(request_hdd->manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loadHdd(QNetworkReply*)));
     }
 }
 
@@ -134,6 +138,33 @@ void MainWindow::loadRam(QNetworkReply* reply)
         dataRam[date.toString("dd/MM/YYYY HH:mm:ss")] = data;
 
         this->updateChart();
+    }
+
+    reply->deleteLater();
+}
+
+void MainWindow::loadHdd(QNetworkReply* reply)
+{
+    if(reply->error())
+    {
+        qDebug() << "ERROR!";
+        qDebug() << reply->errorString();
+    }
+    else
+    {
+        QString strReply = (QString)reply->readAll();
+        QJsonDocument jsonResponse = QJsonDocument::fromJson(strReply.toUtf8());
+        QJsonObject jsonObj = jsonResponse.object();
+        ui->hdd_total_value->setText(QString::number(jsonObj["total"].toVariant().toLongLong()));
+        ui->hdd_usage_value->setText(QString::number(jsonObj["usage"].toVariant().toLongLong()));
+        QJsonArray jsonArray = jsonObj["devices"].toArray();
+        foreach (const QJsonValue & value, jsonArray) {
+            QJsonObject obj = value.toObject();
+            ui->hdd_name_value->setText(ui->hdd_name_value->text() + obj["name"].toString());
+            //if (value == jsonArray.last()) {
+            //   ui->hdd_name_value->setText(ui->hdd_name_value->text() + ", ");
+            //}
+        }
     }
 
     reply->deleteLater();

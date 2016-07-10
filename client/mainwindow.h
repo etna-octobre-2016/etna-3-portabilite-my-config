@@ -48,6 +48,7 @@ private slots:
     void loadCpu(QNetworkReply* reply);
     void loadOs(QNetworkReply* reply);
     void loadRam(QNetworkReply* reply);
+    void loadHdd(QNetworkReply* reply);
     void refreshRam();
 };
 

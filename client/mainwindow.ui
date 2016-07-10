@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>763</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>19</x>
       <y>18</y>
       <width>761</width>
-      <height>521</height>
+      <height>691</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -40,7 +40,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
@@ -52,10 +52,17 @@
            <x>20</x>
            <y>10</y>
            <width>711</width>
-           <height>431</height>
+           <height>281</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout">
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>RAM disponible :</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="0">
            <widget class="QLabel" name="label">
             <property name="text">
@@ -63,10 +70,10 @@
             </property>
            </widget>
           </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_7">
+          <item row="4" column="1">
+           <widget class="QLabel" name="ram_tot_value">
             <property name="text">
-             <string>RAM disponible :</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -84,15 +91,22 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
-           <widget class="QLabel" name="ram_tot_value">
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_3">
             <property name="text">
-             <string/>
+             <string>Système d'exploitation :</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QLabel" name="architecture_value">
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Nombre de coeurs :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLabel" name="ram_free_value">
             <property name="text">
              <string/>
             </property>
@@ -112,24 +126,17 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Nombre de coeurs :</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLabel" name="ram_free_value">
+          <item row="3" column="1">
+           <widget class="QLabel" name="architecture_value">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_3">
+          <item row="6" column="1">
+           <widget class="QLabel" name="ram_used_value">
             <property name="text">
-             <string>Système d'exploitation :</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -147,12 +154,20 @@
             </property>
            </widget>
           </item>
-          <item row="6" column="1">
-           <widget class="QLabel" name="ram_used_value">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="verticalLayoutWidget_3">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>300</y>
+           <width>711</width>
+           <height>311</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2"/>
           </item>
          </layout>
         </widget>
@@ -161,16 +176,59 @@
         <attribute name="title">
          <string>Stockage</string>
         </attribute>
-        <widget class="QWidget" name="verticalLayoutWidget_2">
+        <widget class="QWidget" name="gridLayoutWidget_2">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>10</y>
-           <width>731</width>
-           <height>431</height>
+           <y>20</y>
+           <width>711</width>
+           <height>281</height>
           </rect>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2"/>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>Espace total :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Disque dur :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="hdd_usage_value">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="hdd_total_value">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_11">
+            <property name="text">
+             <string>Espace utilisé :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="hdd_name_value">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>
