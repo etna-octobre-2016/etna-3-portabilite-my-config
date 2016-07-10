@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QChart *chart = new QChart();
     chart->legend()->hide();
-    chart->createDefaultAxes();
     chart->setTitle("RAM Disponible");
 
     chartView = new QChartView(chart);
@@ -26,21 +25,21 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(refreshRam()));
-    timer->start(this->seconds);
+    timer->start(this->ms_time);
 }
 
 void MainWindow::loadSettings()
 {
     QSettings settings(QFileInfo(QCoreApplication::applicationFilePath()).absoluteFilePath() + QString::fromStdString("settings.ini"), QSettings::IniFormat);
     this->url_api = settings.value("url_api").toString();
-    this->seconds = settings.value("seconds", 2000).toString().toInt();
+    this->ms_time = settings.value("ms_time", 2000).toString().toInt();
 }
 
 void MainWindow::saveSettings()
 {
     QSettings settings(QFileInfo(QCoreApplication::applicationFilePath()).absoluteFilePath() + QString::fromStdString("settings.ini"), QSettings::IniFormat);
     settings.setValue("url_api", this->url_api);
-    settings.setValue("seconds", this->seconds);
+    settings.setValue("ms_time", this->ms_time);
 }
 
 void MainWindow::initTab()
@@ -173,17 +172,19 @@ void MainWindow::loadHdd(QNetworkReply* reply)
 void MainWindow::updateChart()
 {
     chartView->chart()->removeAllSeries();
+
     int x = 0;
     QLineSeries *new_series = new QLineSeries();
 
     foreach (const QJsonValue write, dataRam){
        new_series->append(x, write.toObject()["free"].toInt());
-       x++;
+       x = x + (this->ms_time / 1000);
     }
 
     chartView->chart()->addSeries(new_series);
-
     chartView->chart()->createDefaultAxes();
+    chartView->chart()->axisX()->setTitleText("Secondes");
+    chartView->chart()->axisY()->setTitleText("Octets");
 }
 
 MainWindow::~MainWindow()

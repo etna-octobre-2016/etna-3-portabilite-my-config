@@ -35,7 +35,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QString url_api;
-    int seconds;
+    int ms_time;
     QChartView *chartView;
     QJsonObject dataRam;
     void updateChart();
