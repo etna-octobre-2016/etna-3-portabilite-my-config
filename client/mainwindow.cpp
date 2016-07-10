@@ -31,14 +31,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::loadSettings()
 {
-    QSettings settings("settings.ini", QSettings::IniFormat);
+    QSettings settings(QFileInfo(QCoreApplication::applicationFilePath()).absoluteFilePath() + QString::fromStdString("settings.ini"), QSettings::IniFormat);
     this->url_api = settings.value("url_api").toString();
-    this->seconds = settings.value("seconds", 5000).toString().toInt();
+    this->seconds = settings.value("seconds", 2000).toString().toInt();
 }
 
 void MainWindow::saveSettings()
 {
-    QSettings settings("settings.ini", QSettings::IniFormat);
+    QSettings settings(QFileInfo(QCoreApplication::applicationFilePath()).absoluteFilePath() + QString::fromStdString("settings.ini"), QSettings::IniFormat);
     settings.setValue("url_api", this->url_api);
     settings.setValue("seconds", this->seconds);
 }
@@ -194,9 +194,11 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionSetIp_triggered()
 {
     QString new_url_api = QInputDialog::getText(this, "URL de l'API", "Quelle est l'URL de l'API ?", QLineEdit::Normal, this->url_api);
-    this->url_api = new_url_api;
-    this->saveSettings();
-    this->initTab();
+    if (new_url_api != "") {
+        this->url_api = new_url_api;
+        this->saveSettings();
+        this->initTab();
+    }
 }
 
 void MainWindow::on_actionExportData_triggered()
