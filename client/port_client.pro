@@ -4,7 +4,10 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui\
+        network\
+        charts
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -14,10 +17,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    about.cpp
+    request.cpp
 
 HEADERS  += mainwindow.h \
-    about.h
+    request.h
 
-FORMS    += mainwindow.ui \
-    about.ui
+FORMS    += mainwindow.ui
+
+MAKEFILE = build/Makefile

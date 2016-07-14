@@ -1,52 +1,43 @@
 #ifndef _HEADER_H_
 #define _HEADER_H_
-
 #include <iostream>
-#ifdef _WIN32
-    #include <windows.h>
-    #include <winsock2.h>
-    typedef int socklen_t;
-    #include "memorywin.hpp"
-#else
-    #include <sys/utsname.h>
-    #include <sys/types.h>
-    #include <sys/sysctl.h>
-    #include <sys/param.h>
-    #include <sys/mount.h>
-
-    #include <sys/socket.h>
-    #include <netinet/in.h>
-    #include <arpa/inet.h>
-    #include <unistd.h>
-
-    #define INVALID_SOCKET -1
-    #define SOCKET_ERROR -1
-    #define closesocket(param) close(param)
-
-    typedef int SOCKET;
-    typedef struct sockaddr_in SOCKADDR_IN;
-    typedef struct sockaddr SOCKADDR;
-#endif
-
-#include <stdio.h>
-#include <stdlib.h> 
 #include <string>
+#include <restbed>
+#include <sstream>
+#include <vector>
+#include "../lib/simplejson/JSON.h"
+#include "../lib/utf8/utf8.h"
 #include "cpu.h"
-#include "os.h"
-#include "memory.h"
 #include "hdd.h"
-#include "client.h"
-#include "socket.h"
-#include "macos.hpp"
-#include "windowsos.hpp"
-#include "cpumac.hpp"
-#include "cpuwin.hpp"
-#include "cpulinux.hpp"
-#include "memorymac.hpp"
-#include "memorylinux.hpp"
-
-#define WAIT_SEC        0
-#define WAIT_USEC       20
-#define PORT            1280
-
+#include "memory.h"
+#include "os.h"
+#include "webservice.h"
+#if defined(_WIN32)
+  #include <windows.h>
+  #include <VersionHelpers.h>
+  #include "cpuwin.hpp"
+  #include "memorywin.hpp"
+  #include "windowsos.hpp"
+  #include "winhdd.hpp"
+#elif defined(__APPLE__)
+  #include <sys/mount.h>
+  #include <sys/param.h>
+  #include <sys/sysctl.h>
+  #include <sys/types.h>
+  #include <sys/utsname.h>
+  #include <unistd.h>
+  #include "cpumac.hpp"
+  #include "macos.hpp"
+  #include "memorymac.hpp"
+  #include "machdd.hpp"
+#else
+  #include <stdio.h>
+  #include <sys/sysinfo.h>
+  #include <sys/utsname.h>
+  #include "command.h"
+  #include "cpulinux.hpp"
+  #include "linuxhdd.hpp"
+  #include "linuxos.hpp"
+  #include "memorylinux.hpp"
+#endif
 #endif

@@ -3,7 +3,19 @@
 
 #include <QMainWindow>
 #include <QInputDialog>
-#include "about.h"
+#include <QtCharts>
+#include <QtNetwork>
+#include <QJsonDocument>
+#include <QJsonObject>
+
+#include <QLineSeries>
+#include <QChart>
+#include <QChartView>
+
+#include <QDateTime>
+#include "request.h"
+
+using namespace QtCharts;
 
 namespace Ui {
 class MainWindow;
@@ -17,15 +29,27 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void initTab();
-    void setUrlApi(std::string new_url_api);
+    void setUrlApi(QString new_url_api);
+
 
 private:
     Ui::MainWindow *ui;
-    std::string url_api;
+    QString url_api;
+    int ms_time;
+    QChartView *chartView;
+    QJsonObject dataRam;
+    void updateChart();
+    void loadSettings();
+    void saveSettings();
 
 private slots:
     void on_actionSetIp_triggered();
-    void on_actionAbout_triggered();
+    void on_actionExportData_triggered();
+    void loadCpu(QNetworkReply* reply);
+    void loadOs(QNetworkReply* reply);
+    void loadRam(QNetworkReply* reply);
+    void loadHdd(QNetworkReply* reply);
+    void refreshRam();
 };
 
 #endif // MAINWINDOW_H

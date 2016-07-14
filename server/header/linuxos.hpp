@@ -1,11 +1,11 @@
 #ifndef _LINUXOS_H_
 #define _LINUXOS_H_
 
-#include "os.h"
+#include "header.h"
 
-class Linuxsos : public Os
+class Linuxos : public Os
 {
-    public:
+public:
     Linuxos();
     std::string getName();
     int getArchitecture();

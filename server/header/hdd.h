@@ -1,16 +1,20 @@
 #ifndef _HDD_H_
 #define _HDD_H_
 
+#include "header.h"
+
 class Hdd
 {
-    private:
+    protected:
     uint64_t totalcapacity;
     uint64_t usedCapacity;
+	std::vector<std::string> hddList;
     
     public:
-    Hdd();
-    uint64_t getTotalCapacity();
-    uint64_t getUsedCapacity();
+    virtual uint64_t getTotalCapacity() = 0;
+    virtual uint64_t getUsedCapacity() = 0;
+	virtual std::vector<std::string> getListHardDrive() = 0;
+    static Hdd *getInstance();
 };
 
 #endif

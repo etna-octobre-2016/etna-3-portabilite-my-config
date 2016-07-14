@@ -1,7 +1,7 @@
 #ifndef _MEMORYWIN_H_
 #define _MEMORYWIN_H_
 
-#include "memory.h"
+#include "header.h"
 
 class Memorywin : public Memory
 {
